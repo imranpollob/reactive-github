@@ -8,6 +8,10 @@ class Search extends Component {
 
   searchProfile = event => {
     event.preventDefault();
+    this.setState({
+      profiles: []
+    });
+
     fetch(
       `https://api.github.com/search/users?q=${this.state.term}&per_page=10`
     )

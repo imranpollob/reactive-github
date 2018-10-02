@@ -1,7 +1,7 @@
 import React from "react";
 
-const Todo = props => (
+const TodoList = props => (
   <ul>{props.items.map((item, index) => <li key={index}>{item}</li>)}</ul>
 );
 
-export default Todo;
+export default TodoList;

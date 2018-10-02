@@ -1,8 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./App.js";
+import { BrowserRouter } from "react-router-dom";
 import Search from "./Search.js";
+import Center from "./routeme/Center.js";
+import Todo from "./todo/Todo.js";
+import "./index.css";
 
 const rootElement = document.getElementById("root");
-// ReactDOM.render(<App />, rootElement);
-ReactDOM.render(<Search />, rootElement);
+
+ReactDOM.render(
+  <BrowserRouter>
+    <Search />
+  </BrowserRouter>,
+  rootElement
+);

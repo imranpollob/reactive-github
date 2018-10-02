@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import Todo from "./Todo.js";
-import "./App.css";
+import TodoList from "./TodoList.js";
 
-class App extends Component {
+class Todo extends Component {
   state = {
     items: [],
     term: ""
@@ -22,7 +21,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <p>Add a new Todo</p>
+        <p>Add a new TodoList</p>
         <form onSubmit={this.addItem}>
           <input
             value={this.state.term}
@@ -32,10 +31,10 @@ class App extends Component {
           <button type="submit">Add</button>
         </form>
 
-        <Todo items={this.state.items} />
+        <TodoList items={this.state.items} />
       </div>
     );
   }
 }
 
-export default App;
+export default Todo;
