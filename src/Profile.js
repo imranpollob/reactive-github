@@ -1,5 +1,8 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
+import Following from "./Following.js";
+import Followers from "./Followers.js";
+import Repos from "./Repos.js";
 
 class Profile extends Component {
   username = this.props.match.params.username;
@@ -53,29 +56,16 @@ class Profile extends Component {
         <img src={this.state.profileData.avatar_url} height="200" />
         <p>name: {this.state.profileData.name}</p>
         <p>About: {this.state.profileData.bio}</p>
-        <p>repositories: {this.state.profileData.public_repos}</p>
         <p>
-          <Link
-            to={{
-              pathname: `/${this.username}/followers`,
-              state: { type: "followers" }
-            }}
-          >
-            Followers
-          </Link>{" "}
-          :
+          <Link to={`/${this.username}/repo`}>Repositories</Link> :
+          {this.state.profileData.public_repos}
+        </p>
+        <p>
+          <Link to={`/${this.username}/followers`}>Followers</Link> :
           {this.state.profileData.followers}
         </p>
         <p>
-          <Link
-            to={{
-              pathname: `/${this.username}/followers`,
-              state: { type: "following" }
-            }}
-          >
-            Following
-          </Link>{" "}
-          :
+          <Link to={`/${this.username}/following`}>Following</Link> :
           {this.state.profileData.following}
         </p>
         <p>location: {this.state.profileData.location}</p>
@@ -96,7 +86,10 @@ class Profile extends Component {
             <p>language: {repo.language}</p>
             <p>forks: {repo.forks_count}</p>
             <p>
-              url: <a href={repo.html_url}>{repo.name}</a>
+              url:{" "}
+              <a href={repo.html_url} target="_blank">
+                {repo.name}
+              </a>
             </p>
             <p>last update: {repo.updated_at}</p>
           </div>
@@ -111,10 +104,12 @@ class Profile extends Component {
     return (
       <div>
         <h2>{this.username}</h2>
-        <div>
-          {this.renderProfile()}
-          {this.renderRepositorySummary()}
-        </div>
+
+        {this.renderProfile()}
+
+        <Route path="/:username/repo" component={Repos} />
+        <Route path="/:username/following" component={Following} />
+        <Route path="/:username/followers" component={Followers} />
       </div>
     );
   }

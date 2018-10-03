@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import ProfileList from "./ProfileList.js";
+import { Route } from "react-router-dom";
 
 class Follow extends Component {
   username = this.props.match.params.username;
   state = {
     profiles: [],
-    loading: true
+    loading: true,
+    status: true
   };
 
   componentDidMount() {
@@ -19,8 +21,8 @@ class Follow extends Component {
   };
 
   fetchFollowersData() {
-    const type = this.props.location.state.type;
-    const api = `https://api.github.com/users/${this.username}/${type}`;
+    const api = `https://api.github.com/users/${this.username}/following`;
+    console.log(api);
     fetch(api)
       .then(response => response.json())
       .then(data => {
@@ -37,7 +39,7 @@ class Follow extends Component {
 
     return (
       <div>
-        <h3>{this.props.location.state.type}</h3>
+        <h3>Following</h3>
         <ProfileList profileListData={this.state.profiles} />
       </div>
     );

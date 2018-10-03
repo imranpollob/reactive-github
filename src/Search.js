@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import ProfileList from "./ProfileList.js";
 
 class Search extends Component {
