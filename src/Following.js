@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import ProfileList from "./ProfileList.js";
 import { Route } from "react-router-dom";
 
-class Follow extends Component {
+class Following extends Component {
   username = this.props.match.params.username;
   state = {
     profiles: [],
@@ -46,4 +46,4 @@ class Follow extends Component {
   }
 }
 
-export default Follow;
+export default Following;
