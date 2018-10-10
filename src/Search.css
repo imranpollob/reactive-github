@@ -3,6 +3,7 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  padding-top: 10px;
 }
 .input-form .form-inline {
   width: 400px;
