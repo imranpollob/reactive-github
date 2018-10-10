@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./Repos.css";
 
 class Repos extends Component {
   username = this.props.match.params.username;
@@ -60,20 +61,28 @@ class Repos extends Component {
             {number}
           </button>
         ))}
+
         {this.state.repositoryData.map(repo => (
-          <div key={repo.id}>
-            <h3>name: {repo.name}</h3>
-            <p>description: {repo.description}</p>
-            <p>stars: {repo.stargazers_count}</p>
-            <p>language: {repo.language}</p>
-            <p>forks: {repo.forks_count}</p>
-            <p>
-              url:{" "}
-              <a href={repo.html_url} target="_blank">
-                {repo.name}
-              </a>
-            </p>
-            <p>last update: {repo.updated_at}</p>
+          <div key={repo.id} class="repo">
+            <div class="repo-header">
+              <div class="repo-title">
+                {repo.name} {repo.fork && <div className="forked">Forked</div>}
+              </div>
+              <div class="repo-url">
+                <a href={repo.html_url} target="_blank">
+                  Link
+                </a>
+              </div>
+            </div>
+            <div class="repo-body">{repo.description}</div>
+            <div class="repo-status">
+              <div class="">Language : {repo.language}</div>
+              <div class="">Stars : {repo.stargazers_count}</div>
+              <div class="">Forks : {repo.forks_count}</div>
+              <div class="">
+                Last Update : {new Date(repo.updated_at).toLocaleDateString()}
+              </div>
+            </div>
           </div>
         ))}
       </div>
