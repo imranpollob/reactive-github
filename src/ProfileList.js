@@ -1,26 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import {
-  Card,
-  CardImg,
-  CardText,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  Container,
-  Row,
-  Col,
-  Button,
-  Form,
-  FormGroup,
-  Label,
-  Input
-} from "reactstrap";
+import { Row, Col } from "reactstrap";
 const ProfileList = props => (
   <Row>
     {props.profileListData.map((data, index) => (
-      <Col sm="2">
-        <Link to={`/${data.login}`}>
+      <Col sm="2" style={{ textAlign: "center" }}>
+        <Link to={`/${data.login}/repo`}>
           <img src={data.avatar_url} height="100" />
           <p>{data.login}</p>
         </Link>

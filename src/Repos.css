@@ -1,0 +1,30 @@
+.repo {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  border: 1px solid;
+  margin-top: 10px;
+}
+
+.repo-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.repo-status {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.repo-title {
+  font-size: 19px;
+  font-weight: bold;
+  padding-bottom: 4px;
+}
+
+.repo-title .forked {
+  font-size: 8px;
+}
