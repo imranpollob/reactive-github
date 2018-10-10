@@ -1,0 +1,15 @@
+.input-form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.input-form .form-inline {
+  width: 400px;
+}
+.input-form .form-inline input {
+  width: calc(100% - 90px);
+}
+.input-form .form-inline button {
+  width: 90px;
+}

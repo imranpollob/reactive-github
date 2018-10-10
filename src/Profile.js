@@ -3,13 +3,15 @@ import { Route, Link } from "react-router-dom";
 import Following from "./Following.js";
 import Followers from "./Followers.js";
 import Repos from "./Repos.js";
+import Search from "./Search.js";
 
 class Profile extends Component {
   state = {
     profileData: {},
     username: this.props.match.params.username,
     repositoryData: [],
-    loading: true
+    loading: true,
+    word: ""
   };
 
   componentDidMount() {
@@ -67,6 +69,11 @@ class Profile extends Component {
         </p>
         <p>location: {this.state.profileData.location}</p>
         <p>Join Date: {this.state.profileData.created_at}</p>
+        <p>
+          <a href={this.state.profileData.html_url} target="_blank">
+            Link
+          </a>
+        </p>
       </div>
     );
   }
@@ -76,8 +83,9 @@ class Profile extends Component {
 
     return (
       <div>
+        <Link to="/">Go to Search</Link>
+        <Search />
         <h2>{this.username}</h2>
-
         {this.renderProfile()}
         <Route path="/:username/repo" component={Repos} />
         <Route path="/:username/following" component={Following} />

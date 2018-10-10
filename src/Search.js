@@ -1,5 +1,23 @@
 import React, { Component } from "react";
 import ProfileList from "./ProfileList.js";
+import {
+  Card,
+  CardImg,
+  CardText,
+  CardBody,
+  CardTitle,
+  CardSubtitle,
+  Container,
+  Row,
+  Col,
+  Button,
+  Form,
+  FormGroup,
+  Label,
+  Input
+} from "reactstrap";
+
+import "./Search.css";
 
 class Search extends Component {
   state = {
@@ -14,7 +32,7 @@ class Search extends Component {
     });
     const api = `https://api.github.com/search/users?q=${
       this.state.term
-    }&per_page=10`;
+    }&per_page=12`;
 
     fetch(api)
       .then(response => response.json())
@@ -36,24 +54,31 @@ class Search extends Component {
 
   renderInputForm = () => {
     return (
-      <form onSubmit={this.searchProfile}>
-        <input
-          value={this.state.term}
-          placeholder="Profile"
-          onChange={this.onChange}
-        />
-        <button type="submit">Search</button>
-      </form>
+      <div className="input-form">
+        <h4>Git Me</h4>
+        <Form inline onSubmit={this.searchProfile}>
+          <Input
+            type="text"
+            placeholder="Profile"
+            value={this.state.term}
+            onChange={this.onChange}
+          />
+
+          <Button type="submit" color="primary">
+            Search
+          </Button>
+        </Form>
+      </div>
     );
   };
 
   render() {
     return (
-      <div>
-        <p>Search</p>
+      <Container>
         {this.renderInputForm()}
+        <br />
         <ProfileList profileListData={this.state.profiles} />
-      </div>
+      </Container>
     );
   }
 }
