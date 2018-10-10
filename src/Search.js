@@ -1,21 +1,6 @@
 import React, { Component } from "react";
 import ProfileList from "./ProfileList.js";
-import {
-  Card,
-  CardImg,
-  CardText,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  Container,
-  Row,
-  Col,
-  Button,
-  Form,
-  FormGroup,
-  Label,
-  Input
-} from "reactstrap";
+import { Button, Form, Input } from "reactstrap";
 
 import "./Search.css";
 
@@ -74,11 +59,11 @@ class Search extends Component {
 
   render() {
     return (
-      <Container>
+      <div>
         {this.renderInputForm()}
         <br />
         <ProfileList profileListData={this.state.profiles} />
-      </Container>
+      </div>
     );
   }
 }

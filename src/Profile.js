@@ -71,7 +71,8 @@ class Profile extends Component {
               </div>
               <div class="">location: {this.state.profileData.location}</div>
               <div class="">
-                Member Since: {this.state.profileData.created_at}
+                Member Since:{" "}
+                {new Date(this.state.profileData.created_at).toDateString()}
               </div>
             </div>
           </div>
@@ -100,7 +101,6 @@ class Profile extends Component {
 
     return (
       <Container>
-        <Link to="/">Go to Search</Link>
         <Search />
         <h2>{this.username}</h2>
         {this.renderProfile()}
