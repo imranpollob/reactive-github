@@ -3,6 +3,7 @@ import React, { Component } from "react";
 class Repos extends Component {
   username = this.props.match.params.username;
   state = {
+    profileData: {},
     repositoryData: [],
     loading: true
   };
@@ -13,14 +14,28 @@ class Repos extends Component {
 
   fetchData = async () => {
     this.setState({ loading: true });
+    await this.fetchProfileData();
     await this.fetchReposioryData();
     this.setState({ loading: false });
   };
 
-  fetchReposioryData() {
+  fetchProfileData() {
+    const api = `https://api.github.com/users/${this.username}`;
+    fetch(api)
+      .then(response => response.json())
+      .then(data => {
+        if (data.length !== 0) {
+          this.setState({
+            profileData: data
+          });
+        }
+      });
+  }
+
+  fetchReposioryData(page = 1) {
     const api = `https://api.github.com/users/${
       this.username
-      }/repos?sort=pushed`;
+    }/repos?sort=pushed&per_page=10&page=${page}`;
     fetch(api)
       .then(response => response.json())
       .then(data => {
@@ -32,9 +47,19 @@ class Repos extends Component {
   }
 
   renderRepositorySummary() {
+    const totalPages = Math.ceil(this.state.profileData.public_repos / 10);
+    let paginationArray = [];
+    for (var i = 1; i <= totalPages; i++) {
+      paginationArray.push(i);
+    }
+
     return (
       <div>
-        <h2>Repositories</h2>
+        {paginationArray.map(number => (
+          <button onClick={() => this.fetchReposioryData(number)}>
+            {number}
+          </button>
+        ))}
         {this.state.repositoryData.map(repo => (
           <div key={repo.id}>
             <h3>name: {repo.name}</h3>
@@ -58,11 +83,7 @@ class Repos extends Component {
   render() {
     if (this.state.loading) return <div>loading. . .</div>;
 
-    return (
-      <div>
-          {this.renderRepositorySummary()}
-      </div>
-    );
+    return <div>{this.renderRepositorySummary()}</div>;
   }
 }
 
