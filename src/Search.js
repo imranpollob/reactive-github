@@ -15,9 +15,7 @@ class Search extends Component {
     this.setState({
       profiles: []
     });
-    const api = `https://api.github.com/search/users?q=${
-      this.state.term
-    }&per_page=12`;
+    const api = `https://api.github.com/search/users?q=${this.state.term}&per_page=12`;
 
     fetch(api)
       .then(response => response.json())

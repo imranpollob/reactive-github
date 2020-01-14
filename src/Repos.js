@@ -34,9 +34,7 @@ class Repos extends Component {
   }
 
   fetchReposioryData(page = 1) {
-    const api = `https://api.github.com/users/${
-      this.username
-    }/repos?sort=pushed&per_page=10&page=${page}`;
+    const api = `https://api.github.com/users/${this.username}/repos?sort=pushed&per_page=10&page=${page}`;
     fetch(api)
       .then(response => response.json())
       .then(data => {
