@@ -1,0 +1,40 @@
+.home-page {
+  display: flex;
+  justify-content: center;
+}
+
+.hero {
+  width: min(800px, 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+  text-align: center;
+}
+
+.hero-copy h1 {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+}
+
+.hero-copy p {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+}
+
+.hero-highlights {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.hero-highlights li {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+}
