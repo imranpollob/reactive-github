@@ -6,7 +6,10 @@ const AppShell = ({ children }: PropsWithChildren) => {
     <div className="app-shell">
       <header className="app-header">
         <Link to="/" className="logo">
-          Reactive GitHub
+          <span aria-hidden="true" className="logo-mark">
+            <span className="logo-mark__inner" />
+          </span>
+          GitLens
         </Link>
         <span className="app-tagline">GitHub explorer for quick insights</span>
       </header>

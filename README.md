@@ -1,6 +1,6 @@
-# Reactive GitHub (2024 refresh)
+# GitLens 🔍
 
-Modernised GitHub profile explorer built with React 18, Vite, and TanStack Query. Search for any public username to see a profile overview, language breakdown, repository explorer, and quick highlights.
+Search for any public username to see a profile overview, language breakdown, repository explorer, and quick highlights.
 
 ## ✨ Feature highlights
 - Smart user search with quick suggestions
@@ -35,21 +35,3 @@ Modernised GitHub profile explorer built with React 18, Vite, and TanStack Query
    ```
 
 > **GitHub API limits**: Unauthenticated requests are limited to 60 per hour. Heavy usage or users with thousands of repositories may require providing a personal access token and extending the API layer.
-
-## 🗂️ Project structure
-```
-src/
-  api/             # GitHub REST helpers
-  features/        # Feature-specific UI modules (search, profile, repos, etc.)
-  hooks/           # Reusable hooks
-  layout/          # Application shell / shared layout
-  pages/           # Route-level screens
-  styles/          # Global styles
-  utils/           # Formatting and insight helpers
-```
-
-## 🔧 Configuration
-- `vite.config.ts` hosts the Vite + React SWC setup.
-- `tsconfig.json` is tuned for modern ESM and JSX runtime.
-
-Feel free to extend the dashboard with authenticated requests, caching, or deploy it via your favourite static hosting service.

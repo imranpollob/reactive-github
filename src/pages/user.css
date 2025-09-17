@@ -5,13 +5,11 @@
 }
 
 .search-section {
-  position: sticky;
-  top: 84px;
-  z-index: 4;
+  margin-bottom: 1rem;
 }
 
 .search-section .search-form__form {
-  box-shadow: 0 15px 45px rgba(15, 23, 42, 0.22);
+  box-shadow: 0 15px 45px rgba(15, 23, 42, 0.12);
 }
 
 .insights-grid {
@@ -39,6 +37,6 @@
 
 @media (max-width: 720px) {
   .search-section {
-    position: static;
+    margin-bottom: 0.75rem;
   }
 }
