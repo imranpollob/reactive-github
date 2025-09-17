@@ -1,3 +1,4 @@
+import { GithubRepo } from '../../api/github';
 import { RepoInsights } from '../../utils/githubStats';
 import { formatDateString, formatDistance, formatNumber } from '../../utils/format';
 import './highlights.css';
@@ -6,30 +7,38 @@ interface HighlightsProps {
   insights: Pick<RepoInsights, 'mostStarredRepo' | 'oldestRepo' | 'recentlyActiveRepo'>;
 }
 
+type HighlightItem = {
+  key: string;
+  title: string;
+  repo: GithubRepo | null;
+  meta: (repo: GithubRepo) => string;
+  footer: (repo: GithubRepo) => string;
+};
+
 const Highlights = ({ insights }: HighlightsProps) => {
-  const items = [
+  const items: HighlightItem[] = [
     {
       key: 'most-starred',
       title: 'Most starred repo',
       repo: insights.mostStarredRepo,
-      meta: repo => `⭐ ${formatNumber(repo.stargazers_count)} stars`,
-      footer: repo => `Updated ${formatDistance(repo.pushed_at)}`
+      meta: (repo: GithubRepo) => `⭐ ${formatNumber(repo.stargazers_count)} stars`,
+      footer: (repo: GithubRepo) => `Updated ${formatDistance(repo.pushed_at)}`
     },
     {
       key: 'oldest',
       title: 'Oldest repo',
       repo: insights.oldestRepo,
-      meta: repo => `Created ${formatDateString(repo.created_at)}`,
-      footer: repo => `Last push ${formatDistance(repo.pushed_at)}`
+      meta: (repo: GithubRepo) => `Created ${formatDateString(repo.created_at)}`,
+      footer: (repo: GithubRepo) => `Last push ${formatDistance(repo.pushed_at)}`
     },
     {
       key: 'recent',
       title: 'Recently active repo',
       repo: insights.recentlyActiveRepo,
-      meta: repo => `Pushed ${formatDistance(repo.pushed_at)}`,
-      footer: repo => `⭐ ${formatNumber(repo.stargazers_count)} · 🍴 ${formatNumber(repo.forks_count)}`
+      meta: (repo: GithubRepo) => `Pushed ${formatDistance(repo.pushed_at)}`,
+      footer: (repo: GithubRepo) => `⭐ ${formatNumber(repo.stargazers_count)} · 🍴 ${formatNumber(repo.forks_count)}`
     }
-  ] as const;
+  ];
 
   return (
     <section className="highlights card">
